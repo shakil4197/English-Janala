@@ -29,7 +29,7 @@ const loadLevelWords = (id) => {
         .then((datas) => {
 
             const buttons = document.querySelectorAll('.lesson-btn');
-            buttons.forEach(button => {
+            buttons.forEach(button=>{
                 button.classList.remove('active');
             })
 
@@ -43,7 +43,7 @@ const loadLevelWords = (id) => {
 }
 
 const displayLevelWords = (data) => {
-
+    
     const wordContainer = document.getElementById('wordContainer')
     wordContainer.innerHTML = "";
 
@@ -78,7 +78,7 @@ const displayLevelWords = (data) => {
     manageSpinner(false);
 }
 
-const loadWordsDetails = async (id) => {
+const loadWordsDetails = async (id)=>{
     // my_modal_5.showModal()
     const url = `https://openapi.programming-hero.com/api/word/${id}`;
 
@@ -88,9 +88,9 @@ const loadWordsDetails = async (id) => {
     displayWordDetails(details.data);
 }
 
-const displayWordDetails = (word) => {
+const displayWordDetails = (word)=>{
     const detailsBox = document.getElementById('detailsContainer');
-    detailsBox.innerHTML = `
+    detailsBox.innerHTML=`
         <div>
                     <h2 class="text-2xl font-bold">${word.word} (<i class="fa-solid fa-microphone-lines"></i> : ${word.pronunciation})</h2>
                 </div>
@@ -112,59 +112,60 @@ const displayWordDetails = (word) => {
 
 }
 
-const createSynonymsData = (arr) => {
-    const data = arr.map((el) => `<span class="btn bg-[#EEEDFF]">${el}</span>`);
+const createSynonymsData = (arr)=>{
+    const data = arr.map((el)=>`<span class="btn bg-[#EEEDFF]">${el}</span>`);
     return data.join(" ");
 }
 
-const manageSpinner = (status) => {
-    if (status == true) {
+const manageSpinner = (status)=>{
+    if(status==true){
         document.getElementById('spinnerBar').classList.remove('hidden');
         document.getElementById('wordContainer').classList.add('hidden');
-    } else {
+    }else{
         document.getElementById('spinnerBar').classList.add('hidden');
         document.getElementById('wordContainer').classList.remove('hidden');
     }
 }
+//Hello
 
-function pronounceWord(word, meaning) {
-    const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = "en-US";
+function pronounceWord(word, meaningText) {
+  
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-US";
+  utterance.rate = 1;
+  utterance.pitch = 1;
 
-    utterance.rate = 1;
-    utterance.pitch = 1;
+  const meaningUtterance = new SpeechSynthesisUtterance("এর অর্থ হলো " + meaningText);
+  meaningUtterance.lang = "bn-BD";
+  meaningUtterance.rate = 1;
+  meaningUtterance.pitch = 1;
 
-    const meaning = new SpeechSynthesisUtterance("এর অর্থ হলো " + meaning);
-    meaning.lang = "bn-BD";
-
-    meaning.rate = 1;
-    meaning.pitch = 1;
-
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utterance);
-    utterance.onend = () => {
-        window.speechSynthesis.speak(meaning);
-    }
+  window.speechSynthesis.cancel();
 
 
+  window.speechSynthesis.speak(utterance);
+
+  utterance.onend = () => {
+    window.speechSynthesis.speak(meaningUtterance);
+  };
 }
 
 
 loadLessons()
 
-document.getElementById('btnSearch').addEventListener('click', () => {
+document.getElementById('btnSearch').addEventListener('click',()=>{
     manageSpinner(true);
     const input = document.getElementById('inputSearch');
     const searchValue = input.value.trim().toLowerCase();
 
     fetch('https://openapi.programming-hero.com/api/words/all')
-        .then((response) => response.json())
-        .then((datas) => {
-            const allWords = datas.data;
-            const filterWords = allWords.filter(word => word.word.toLowerCase().includes(searchValue));
-            setTimeout(() => {
-                displayLevelWords(filterWords);
-            }, 300)
-
-        })
+    .then((response) => response.json())
+    .then((datas) => {
+        const allWords = datas.data;
+        const filterWords = allWords.filter(word=>word.word.toLowerCase().includes(searchValue));
+        setTimeout(()=>{
+            displayLevelWords(filterWords);
+        },300)
+        
+    })
 })
