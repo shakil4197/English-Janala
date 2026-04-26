@@ -68,7 +68,7 @@ const displayLevelWords = (data) => {
                 <div class="text-3xl font-semibold">${element.meaning ? element.meaning : "শব্দ পাওয়া যায় নি"} / ${element.pronunciation ? element.pronunciation : "শব্দ পাওয়া যায় নি"}</div>
                 <div class="mx-12 mt-10 flex justify-between">
                     <button onclick="loadWordsDetails(${element.id})" class="btn bg-[rgba(26,145,255,0.1)] hover:bg-[rgba(26,145,255,0.2)]"><i class="fa-solid fa-circle-info text-xl"></i></button>
-                    <button onclick="pronounceWord(${element['word']},${element['meaning']})" class="btn bg-[rgba(26,145,255,0.1)] hover:bg-[rgba(26,145,255,0.2)]"><i class="fa-solid fa-volume-high text-xl"></i></button>
+                    <button onclick="pronounceWord(${element['word']})" class="btn bg-[rgba(26,145,255,0.1)] hover:bg-[rgba(26,145,255,0.2)]"><i class="fa-solid fa-volume-high text-xl"></i></button>
                 </div>
             </div>
         `
@@ -127,22 +127,18 @@ const manageSpinner = (status)=>{
     }
 }
 
-function pronounceWord(word,meaning) {
+function pronounceWord(word) {
   const utterance = new SpeechSynthesisUtterance(word);
-  const meaing = new SpeechSynthesisUtterance("এর অর্থ হলো "+ meaning);
 
   utterance.lang = "en-US";
-  meaing.lang = "bn-BD";
+  
 
 
   utterance.rate = 1;  
   utterance.pitch = 1; 
 
-  meaing.rate = 1;  
-  meaing.pitch = 1; 
-
   window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utterance + meaing);
+  window.speechSynthesis.speak(utterance);
 }
 
 
