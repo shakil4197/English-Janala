@@ -97,13 +97,13 @@
             </div>
         </section>
 
-        
 
+        <!-- Search Section -->
         <section class="flex justify-center py-8">
             <div class="join">
                 <div>
                     <label class="input validator join-item">
-                        
+
                         <input id="inputSearch" type="text" placeholder="Search Vocabulary" required />
                     </label>
                 </div>
@@ -111,10 +111,12 @@
             </div>
         </section>
 
+        <!-- Loading Section -->
         <section id="spinnerBar" class="flex justify-center items-center py-10 hidden">
             <span class="loading loading-bars loading-xl"></span>
         </section>
 
+        <!-- Main Content Section -->
         <section id="wordContainer"
             class="bg-gray-100 p-10 w-11/12 mx-auto my-10 grid grid-cols-1 lg:grid-cols-3 gap-5 rounded-xl">
 
@@ -128,9 +130,40 @@
 
         </section>
 
+        <section class="my-20 px-8 space-y-6">
+
+            <div>
+                <h1 class="text-3xl font-bold text-center"><span class="text-[#00BCFF]">Frequently</span> Asked
+                    Questions</h1>
+            </div>
+
+            <div class="space-y-3">
+                <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                    <input type="radio" name="my-accordion-3" checked="checked" />
+                    <div class="collapse-title font-semibold">How do I create an account?</div>
+                    <div class="collapse-content text-sm">Click the "Sign Up" button in the top right corner and follow
+                        the
+                        registration process.</div>
+                </div>
+                <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                    <input type="radio" name="my-accordion-3" />
+                    <div class="collapse-title font-semibold">I forgot my password. What should I do?</div>
+                    <div class="collapse-content text-sm">Click on "Forgot Password" on the login page and follow the
+                        instructions sent to your email.</div>
+                </div>
+                <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                    <input type="radio" name="my-accordion-3" />
+                    <div class="collapse-title font-semibold">How do I update my profile information?</div>
+                    <div class="collapse-content text-sm">Go to "My Account" settings and select "Edit Profile" to make
+                        changes.</div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
+
+    <!-- Vocabulary Details Modal -->
     <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box">
             <div id="detailsContainer" class="space-y-5">
@@ -144,6 +177,27 @@
             </div>
         </div>
     </dialog>
+
+    <footer class="flex justify-between items-center p-10 border-t-2 border-orange-100">
+        <div class="left-content space-y-2">
+            <a href="#" class="flex items-center gap-1">
+                <span class="text-lg font-bold">English</span>
+                <img src="assets/logo.png" alt="">
+                <span class="font-bangla text-lg font-semibold">জানালা</span>
+            </a>
+            <h3 class="font-bangla font-semibold text-xl">ইংরেজি শিখুন সহজে</h3>
+            <p>Providing ED-Tech Applications since 2025</p>
+        </div>
+        <div class="right-content">
+            <h1>Follow us</h1>
+            <div>
+                <a href="#" class="text-2xl text-black hover:text-gray-700"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="text-2xl text-black hover:text-gray-700"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="text-2xl text-black hover:text-gray-700"><i class="fa-brands fa-instagram"></i></a>
+                 <a href="#" class="text-2xl text-black hover:text-gray-700"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
 
 
     <script src="script/index.js"></script>
